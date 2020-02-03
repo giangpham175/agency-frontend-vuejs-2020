@@ -4,72 +4,84 @@
             <vue-perfect-scrollbar class="scroll-sidebar">
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li :class="[isMiniSidebar && !isMobile ? 'top-left-sidebar' : '', '']">
-                            <h4 @click="sidebartoggler()" :class="[isMiniSidebar ? ' text-center' : 'ml-3', 'mt-3 mb-5 text-white']">
-                                <i v-if="isMiniSidebar && !isMobile" class="fas fa-align-left"></i>
-                                <i v-else-if="!isMiniSidebar && !isMobile" class="fas fa-angle-double-left"></i>
-                                <i v-else :class="[{ 'ti-menu': !isMobile, 'ti-close': isMobile }]"></i>
-                            </h4>
-                            <h6 class="text-center">
-                                <img :src="user.avatar_id ? 'https://graph.facebook.com/' + user.avatar_id + '/picture?width=100&height=100' : 'assets/images/users/avatar_fb.jpg'" alt="user-img" width="50" class="img-circle" />
-                            </h6>
-                            <h6 class="text-center hide-menu">{{ user.name ? user.name : user.username }}</h6>
-                            <h4 class="hide-menu font-bold">
-                                <span v-if="user.role != 'user'" :class="['badge d-block user-level', 'badge-' + badge_color]">{{ user.role }}</span>
-                                <span v-else-if="user.levels[0]" :class="['badge d-block user-level', 'badge-' + badge_color]">{{ user.levels[0].name }}</span>
-                            </h4>
-                            <h5 class="text-center hide-menu bold mb-5">
-                                {{ user.coin | formatNumber }}
-                            </h5>
-                        </li>
-                        <li class="mt-3" v-show="((user.role == 'admin' || !menu.admin) && !menu.is_hidden) || isDev" v-for="(menu, index) in menus" :key="index" :class="menu.class">
-                            <!-- {{ menu.caption ? menu.caption : "" }}
-                            <router-link v-if="menu.to" :to="menu.to" class="waves-effect waves-dark" aria-expanded="false">
-                                <i :class="[menu.icon, menu.color ? menu.color : '']"></i>
-                                <span class="hide-menu font-bold">
-                                    <i v-if="menu.isMaintenance" class="fa fa-warning text-danger mr-1"></i>
-                                    <i v-if="menu.hide" class="fa fa-lock text-danger mr-1"></i>
-                                    <span :class="menu.isMaintenance ? 'text-warning' : menu.hide ? 'text-danger' : ''">{{ menu.notes ? menu.notes.replace("- Pro", "") : menu.text }}</span>
-                                    <span v-if="menu.notes && menu.notes.indexOf('Pro') > -1" class="badge badge-success text-white ml-auto m-r-5">Pro</span>
-                                    <span v-if="menu.show_coin" class="badge badge-pill badge-cyan text-white ml-auto" page="home">{{ user.coin | formatNumber }}</span>
-                                </span>
-                            </router-link> -->
-                            <a @click="handleSidebarExpandClick(menu)" v-show="menu.childs" :class="[menu.open ? 'active' : '', isMiniSidebar && !isMobile ? 'mini-siderbar' : '', 'has-arrow waves-effect waves-dark']" href="javascript:void(0)" aria-expanded="false">
+                        <!-- top -->
+                        <div :class="[isMiniSidebar && !isMobile ? 'top-left-sidebar' : '', 'text-center']">
+                            <router-link to="/home" class="homepage px-2">
+                                <img src="/assets/images/logo.png" alt class="mt-3" />
+                                <h3 class="bold yellow my-3">Dichvulike.com</h3>
+                            </router-link>
+                        </div>
+
+                        <!-- mid -->
+                        <li class="mb-3" v-show="((user.role == 'admin' || !menu.admin) && !menu.is_hidden) || isDev" v-for="(menu, index) in menus" :key="index" :class="menu.class">
+                            <a @click="handleSidebarExpandClick(menu)" v-show="menu.childs" :class="[menu.open ? 'active' : '', isMiniSidebar && !isMobile ? 'mini-siderbar' : '', 'has-arrow waves-effect waves-dark']" href="javascript:void(0)" aria-expanded="false" class="pl-2">
                                 <i :class="[menu.icon, menu.color ? menu.color : isMiniSidebar && !isMobile ? 'mini-siderbar' : 'text-white', menu.open ? 'active' : '']"></i>
                                 <span class="hide-menu font-bold">{{ menu.text }}</span>
                             </a>
-                            <ul aria-expanded="false" :class="['collapse', { in: menu.open }, isMiniSidebar && !isMobile ? 'mini-siderbar' : '']">
+
+                            <ul aria-expanded="false" :class="['collapse', { in: menu.open }, isMiniSidebar && !isMobile ? 'mini-siderbar' : '', 'px-2']">
                                 <li v-show="!child.is_hidden || isDev" v-for="(child, index2) in menu.childs" :key="index2">
-                                    <router-link :to="child.to">
-                                        <!-- <i :class="['mr-2', child.icon]"></i> -->
-                                        <i v-if="child.isMaintenance" class="fa fa-warning text-danger mr-1"></i>
-                                        <i v-if="child.is_hidden" class="fa fa-lock text-danger mr-1"></i>
-                                        <span :class="child.isMaintenance ? 'text-warning font-bold' : child.is_hidden ? 'text-danger font-bold' : 'font-bold'">{{ child.notes ? child.notes.replace("- Pro", "") : child.text }} </span>
-                                        <span v-if="child.notes && child.notes.indexOf('Pro') > -1" class="badge badge-success text-white ml-auto m-r-5">Pro</span>
-                                        <span v-if="child.badge" class="badge badge-danger text-white ml-auto" page="home">{{ child.count }}</span>
-                                    </router-link>
+                                    <div>
+                                        <router-link :to="child.to">
+                                            <!-- <i v-if="child.isMaintenance" class="fa fa-warning text-danger mr-1"></i>
+                      <i v-if="child.is_hidden" class="fa fa-lock text-danger mr-1"></i>-->
+                                            <!-- <i v-if="child.open" class="fas fa-angle-double-right mt-2 ml-2" style></i> -->
+                                            <div class="child2-menu row align-items-center">
+                                                <div class="col-1">
+                                                    <h6 class="child orange">
+                                                        <i class="fas fa-angle-double-right mt-2" style></i>
+                                                    </h6>
+                                                </div>
+                                                <div class="col">
+                                                    <span :class="child.isMaintenance ? 'text-warning font-bold' : child.is_hidden ? 'text-danger font-bold' : 'font-bold'">{{ child.notes ? child.notes.replace("- Pro", "") : child.text }}</span>
+                                                </div>
+                                            </div>
+                                        </router-link>
+                                    </div>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-small-cap">--- HỖ TRỢ</li>
-                        <li>
-                            <a class="waves-effect waves-dark" :href="site.config && site.config.guide ? site.config.guide : null" target="_blank" aria-expanded="false">
-                                <i class="fa fa-circle-o text-danger"></i>
-                                <span class="hide-menu">Hướng Dẫn</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                                <i class="fa fa-circle-o text-info"></i>
-                                <span class="hide-menu">Hỏi Đáp</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a @click="logout" class="waves-effect waves-dark" href="#" aria-expanded="false">
-                                <i class="fa fa-circle-o text-success"></i>
-                                <span class="hide-menu">Thoát</span>
-                            </a>
-                        </li>
+
+                        <!-- info user -->
+                        <div class="card card-user mx-2 mt-auto">
+                            <div class="card-body py-3">
+                                <div :class="[isMiniSidebar && !isMobile ? 'top-left-sidebar' : '', '']">
+                                    <h6 class="text-center">
+                                        <img :src="user.avatar_id ? 'https://graph.facebook.com/' + user.avatar_id + '/picture?width=100&height=100' : 'assets/images/users/avatar_fb.jpg'" alt="user-img" width="50" class="img-circle" />
+                                    </h6>
+                                    <h6 class="text-center hide-menu m-0">{{ user.name ? user.name : user.username }}</h6>
+                                    <h4 class="hide-menu font-bold">
+                                        <span v-if="user.role != 'user'" :class="['badge d-block user-level', 'badge-' + badge_color]">{{ user.role }}</span>
+                                        <span v-else-if="user.levels[0]" :class="['badge d-block user-level', 'badge-' + badge_color]">{{ user.levels[0].name }}</span>
+                                    </h4>
+                                    <h5 class="text-center hide-menu bold">{{ user.coin | formatNumber }} VND</h5>
+                                </div>
+                            </div>
+
+                            <div class="mx-3 text-center" style="border:1px solid blue;"></div>
+
+                            <div class="card-body py-3">
+                                <router-link to="/profile" tag="a" class="waves-effect waves-dark px-4 py-2">
+                                    <i class="far fa-user blue mx-2"></i>
+                                    <span class="hide-menu font-bold blue">Tài khoản</span>
+                                </router-link>
+
+                                <router-link to="/profile" tag="a" class="waves-effect waves-dark px-4 py-2">
+                                    <i class="fas fa-wallet blue mx-2"></i>
+                                    <span class="hide-menu font-bold blue">Nạp tiền</span>
+                                </router-link>
+
+                                <router-link to="/profile" tag="a" class="waves-effect waves-dark px-4 py-2">
+                                    <i class="far fa-bell blue mx-2"></i>
+                                    <span class="hide-menu font-bold blue">Thông báo</span>
+                                </router-link>
+
+                                <a @click="logout" class="waves-effect waves-dark px-4 py-2" href="#" aria-expanded="false">
+                                    <i class="fas fa-sign-out-alt blue mx-2"></i>
+                                    <span class="hide-menu font-bold blue">Thoát</span>
+                                </a>
+                            </div>
+                        </div>
                     </ul>
                 </nav>
             </vue-perfect-scrollbar>

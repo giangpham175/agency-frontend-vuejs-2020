@@ -1,112 +1,47 @@
 <template>
-  <div class="row">
-    <div class="col-md-9 col-12">
-      <div class="report">
-        <div class="row p-3">
-          <h3 class="font-bold align-self-center">Báo cáo</h3>
-          <h6 class="m-0 ml-auto mr-3 align-self-center">Hiển thị</h6>
-          <select class="align-self-center">
-            <option value="month">Tháng này</option>
-            <option value="week">Tuần này</option>
-          </select>
+    <div class="row">
+        <div class="col-md-9 col-12">
+            <Statisitc />
+            <SSale />
+            <SCustomer />
         </div>
-        <div class="row mt-3 justify-content-between">
-          <div class="col">
-            <div class="card card-report">
-              <div class="card-body text-center">
-                <i class="material-icons font-light">input</i>
-                <h4 class="text-uppercase font-14">Tổng Nạp</h4>
-                <h4 class="bold green font-22">
-                  <number
-                    ref="number1"
-                    :from="0"
-                    :to="user.coin"
-                    :format="theFormat"
-                    :duration="1"
-                    :delay="0"
-                    easing="Power1.easeOut"
-                  />
-                </h4>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="card-body text-center">
-                <i class="material-icons font-light">view_carousel</i>
-                <h4 class="text-uppercase font-14">Tổng Dùng</h4>
-                <h4 class="bold green font-22">999</h4>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="card-body text-center">
-                <i class="material-icons font-light">account_balance_wallet</i>
-                <h4 class="text-uppercase font-14">Doanh Thu</h4>
-                <h4 class="bold green font-22">999</h4>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="card-body text-center">
-                <i class="material-icons font-light">group</i>
-                <h4 class="text-uppercase font-14">Khách Hàng</h4>
-                <h4 class="bold green font-22">999</h4>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="card-body text-center">
-                <i class="material-icons font-light">check_box</i>
-                <h4 class="text-uppercase font-14">Dịch Vụ</h4>
-                <h4 class="bold green font-22">999</h4>
-              </div>
-            </div>
-          </div>
+
+        <div class="col-md-3 col-12">
+            <TopUser />
+            <SService />
         </div>
-      </div>
-
-      <SSale />
-      <SCustomer />
     </div>
-
-    <div class="col-md-3 col-12">
-      <TopUser />
-      <SService />
-    </div>
-  </div>
 </template>
 
 <script>
+import Statisitc from "./report-statistic";
 import SCustomer from "./report-statistic-customer";
 import SSale from "./report-statistic-sale";
 import SService from "./report-statistic-service.vue";
 import TopUser from "./report-top-user";
 
 export default {
-  name: "report",
-  components: {
-    SCustomer,
-    SSale,
-    SService,
-    TopUser
-  },
-  computed: {
-    user() {
-      return this.$store.state.user.user;
+    name: "report",
+    components: {
+        Statisitc,
+        SCustomer,
+        SSale,
+        SService,
+        TopUser
     },
-  },
-  methods: {
-    theFormat(number) {
-      return number
-        ? Math.round(Number(number))
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-        : 0;
+    computed: {
+        // user() {
+        //   return this.$store.state.user.user;
+        // }
+    },
+    methods: {
+        // theFormat(number) {
+        //   return number
+        //     ? Math.round(Number(number))
+        //         .toString()
+        //         .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        //     : 0;
+        // }
     }
-  }
 };
 </script>

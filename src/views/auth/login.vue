@@ -20,7 +20,7 @@
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customCheck1" />
                                     <label class="custom-control-label" for="customCheck1">Nhớ tài khoản</label>
-                                    <router-link to="/reset-password" id="to-recover" class="text-dark float-right"><i class="fa fa-lock m-r-5"></i> Quên mật khẩu?</router-link>
+                                    <router-link to="/forget-password" id="to-recover" class="text-dark float-right"><i class="fa fa-lock m-r-5"></i> Quên mật khẩu?</router-link>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@ export default {
     background-position: center center;
     height: 100vh;
     width: 100%;
-    padding: 10% 0;
+    padding: 5% 0;
     position: fixed;
 }
 

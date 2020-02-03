@@ -23,27 +23,60 @@
     display: block
 }
 
-button{
+button {
     border-radius: 10px;
     border: 0 !important;
 }
-.btn-orange{
+
+.btn-orange {
     background: #FFAA47;
     color: #FFFFFF;
 }
-.orange{
+
+.orange {
     color: #FFAA47;
 }
-.card{
+
+.blue {
+    color: #352D7D;
+}
+
+.yellow {
+    color: #FFC100;
+}
+
+.white {
+    color: #FFFFFF;
+}
+
+.ins {
+    color: #FF2CA0;
+}
+
+.utube {
+    color: #940B34;
+}
+
+.orther {
+    color: #FF8C09;
+}
+
+.card {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     border: 0;
 }
-.card-gray{
+
+.card-gray {
     background: #F2F2F2;
 }
+
+.height-130 {
+    height: 130px;
+}
+
 .login {
-    background-image:url(/assets/images/background/login.png);
+    background-image: url(/assets/images/background/login.png);
     background-size: 100% 100%;
     height: 100vh;
     width: 100%;
@@ -52,6 +85,7 @@ button{
     position: relative;
     top: 5vh;
 }
+
 .input-box {
     border-style: none;
     background: transparent;
@@ -63,6 +97,7 @@ button{
     margin-bottom: 30px;
     border-radius: 0px;
 }
+
 .register {
     background-size: 100% 100%;
     height: 100vh;
@@ -71,84 +106,111 @@ button{
     overflow: auto;
     position: relative;
 }
-.font-bold{
+
+.font-bold {
     font-weight: bold;
 }
-.bold{
+
+.bold {
     font-family: VIEAvantGardeBold;
 }
-.font-12{
+
+.font-11 {
+    font-size: 11px;
+}
+
+.font-12 {
     font-size: 12px;
 }
-.font-13{
+
+.font-13 {
     font-size: 13px;
 }
-.font-14{
+
+.font-14 {
     font-size: 14px;
 }
-.font-16{
+
+.font-16 {
     font-size: 16px;
 }
-.font-18{
+
+.font-18 {
     font-size: 18px;
 }
-.font-19{
+
+.font-19 {
     font-size: 19px;
 }
-.font-20{
+
+.font-20 {
     font-size: 20px;
 }
-.font-22{
+
+.font-22 {
     font-size: 22px;
 }
-.font-24{
+
+.font-24 {
     font-size: 24px;
 }
-.font-30{
+
+.font-30 {
     font-size: 30px;
 }
-.font-32{
+
+.font-32 {
     font-size: 32px;
 }
-.font-36{
+
+.font-36 {
     font-size: 36px;
 }
+
 .ps__thumb-y {
-    transition: background-color .2s linear,width .2s ease-in-out;
-    -webkit-transition: background-color .2s linear,width .2s ease-in-out;
+    transition: background-color .2s linear, width .2s ease-in-out;
+    -webkit-transition: background-color .2s linear, width .2s ease-in-out;
     width: 0px !important;
     right: 0px !important;
 }
-.input{
+
+.input {
     border-radius: 10px !important;
     border: 0
 }
-.input-gray{
+
+.input-gray {
     border-radius: 10px !important;
     border: 0;
     background: #F2F2F2;
 }
-.input-gray:focus{
+
+.input-gray:focus {
     border-radius: 10px !important;
     border: 0;
     background: #F2F2F2;
 }
-.input-light{
+
+.input-light {
     border-radius: 10px !important;
     border: 0;
     background: white;
 }
-.select-gray{
-    background-color:#F2F2F2;
+
+.select-gray {
+    background-color: #F2F2F2;
     border: 0;
     color: #000000;
 }
-.select-light{
+
+.select-light {
     border: 0
 }
-.shadow-0{
+
+.shadow-0 {
     box-shadow: 0px 0px 0px !important;
 }
-iframe{
+
+iframe {
     border-radius: 10px;
 }

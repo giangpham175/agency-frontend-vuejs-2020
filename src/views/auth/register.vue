@@ -124,7 +124,7 @@ export default {
     background-position: center center;
     height: 100vh;
     width: 100%;
-    padding: 10% 0;
+    padding: 5% 0;
     position: fixed;
 }
 

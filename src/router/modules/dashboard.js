@@ -1,5 +1,6 @@
 /** When your routing table is too long, you can split it into small modules* */
 // import store from "@/store";
+// import store from "../../store";
 
 const dashboardRouter = {
     path: "/",
@@ -7,9 +8,12 @@ const dashboardRouter = {
         import ("@/layout/dashboard.vue"),
     redirect: { name: "Home" },
     beforeEnter(to, from, next) {
-        // if (store.state.user.api_token) {
-        // } else {
-        //     next("/login");
+        // let isDangNhap = !!store.state.token;
+        // let isRequiresAuth = to.matched.some(record => record.meta.requiresAuth);
+        // if (isDangNhap && to.path === "/login") {
+        //     return next("/");
+        // } else if (isRequiresAuth && !isDangNhap) {
+        //     return next("/login");
         // }
         next();
     },
@@ -19,6 +23,13 @@ const dashboardRouter = {
             meta: { requiresAuth: true },
             component: () =>
                 import ("@/views/home/home.vue")
+        },
+        {
+            path: "/home1",
+            name: "Home1",
+            meta: { requiresAuth: true },
+            component: () =>
+                import ("@/views/home/home1.vue")
         },
         // {
         //     path: "/admin-user",

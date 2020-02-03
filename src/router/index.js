@@ -7,11 +7,5 @@ Vue.use(Router);
 
 export default new Router({
     mode: "history",
-    routes: [
-        dashboardRouter,
-        loginRouter,
-        registerRouter,
-        fogetPasswordRouter,
-        { path: "*", redirect: "/", hidden: true }
-    ]
+    routes: [dashboardRouter, loginRouter, registerRouter, fogetPasswordRouter, { path: "*", redirect: "/", hidden: true }]
 });

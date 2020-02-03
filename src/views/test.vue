@@ -64,7 +64,7 @@
                             <div class="card-body text-center px-1">
                                 <h4 class="font-19">TỔNG NẠP</h4>
                                 <h4 class="bold green font-22">
-                                    <number ref="number1" :from="0" :to="user.total_recharge" :format="theFormat" :duration="1" :delay="0" easing="Power1.easeOut" />
+                                    <number ref="number1" :from="0" :to="totalDayUse" :format="theFormat" :duration="1" :delay="0" easing="Power1.easeOut" />
                                 </h4>
                             </div>
                         </div>
@@ -72,12 +72,47 @@
                 </div>
 
                 <!-- choose-time -->
-                <statistics></statistics>
+                <div class="col-11 ml-auto text-center p-0">
+                    <div class="card card-gray">
+                        <div class="card-body py-0 px-1">
+                            <div class="row justify-content-around">
+                                <div class="col-md-1 col-6 my-2 px-0">
+                                    <h6 class="font-bold mb-0">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </h6>
+                                </div>
+                                <div class="col-md-4 col-6 my-2 px-0">
+                                    <div class="vdatetime theme-green">
+                                        <input id type="text" class="vdatetime-input text-center input-light" />
+                                        <!---->
+                                        <div></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-6 my-2 px-0">
+                                    <h6 class="font-bold mb-0">đến</h6>
+                                </div>
+                                <div class="col-md-4 col-6 my-2 px-0">
+                                    <div class="vdatetime theme-green">
+                                        <input id type="text" class="vdatetime-input text-center input-light" />
+                                        <!---->
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- chart -->
-                <!-- <div class="chart">
+                <div class="chart">
+                    <!-- <div class="row justify-content-end">
+            <div class="col-1" style="width:20px;height:20px;background:#352D7D"></div>
+            <p class="col-2">Tiền tiêu</p>
+            <div class="col-1" style="width:20px;height:20px;background:#FFB900"></div>
+            <p class="col-2">Tiền nạp</p>
+          </div>-->
                     <BarChart />
-                </div> -->
+                </div>
 
                 <!-- contact -->
                 <h3 class="bold blue">HỖ TRỢ</h3>
@@ -153,7 +188,7 @@
                             <div class="card-body text-center px-1">
                                 <h4 class="font-19">TỔNG NẠP</h4>
                                 <h4 class="bold green font-22">
-                                    <number ref="number1" :from="0" :to="user.total_recharge" :format="theFormat" :duration="1" :delay="0" easing="Power1.easeOut" />
+                                    <number ref="number1" :from="0" :to="totalDayUse" :format="theFormat" :duration="1" :delay="0" easing="Power1.easeOut" />
                                 </h4>
                             </div>
                         </div>
@@ -161,12 +196,47 @@
                 </div>
 
                 <!-- choose-time -->
-                <statistics></statistics>
+                <div class="col-11 ml-auto text-center p-0">
+                    <div class="card card-gray">
+                        <div class="card-body py-0 px-1">
+                            <div class="row justify-content-around">
+                                <div class="col-md-1 col-6 my-2 px-0">
+                                    <h6 class="font-bold mb-0">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </h6>
+                                </div>
+                                <div class="col-md-4 col-6 my-2 px-0">
+                                    <div class="vdatetime theme-green">
+                                        <input id type="text" class="vdatetime-input text-center input-light" />
+                                        <!---->
+                                        <div></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-6 my-2 px-0">
+                                    <h6 class="font-bold mb-0">đến</h6>
+                                </div>
+                                <div class="col-md-4 col-6 my-2 px-0">
+                                    <div class="vdatetime theme-green">
+                                        <input id type="text" class="vdatetime-input text-center input-light" />
+                                        <!---->
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- chart -->
-                <!-- <div class="chart">
-                    <BarChart />
-                </div> -->
+                <div class="chart">
+                    <div class="row justify-content-end">
+                        <div class="col-1" style="width:20px;height:20px;background:#352D7D"></div>
+                        <p class="col-2">Tiền tiêu</p>
+                        <div class="col-1" style="width:20px;height:20px;background:#FFB900"></div>
+                        <p class="col-2">Tiền nạp</p>
+                    </div>
+                    <h1 class="bold text-center">CHART</h1>
+                </div>
 
                 <!-- contact -->
                 <h3 class="bold blue">HỖ TRỢ</h3>
@@ -184,7 +254,7 @@
                                 </div>
                                 <div class="row p-2">
                                     <img src="/assets/images/home/phoneContact.png" alt />
-                                    <a href="tel:+84321445522">
+                                    <a href>
                                         <h4 class="font-15 font-bold white pl-2 m-0 mt-2">0321.44.55.22</h4>
                                     </a>
                                 </div>
@@ -205,15 +275,12 @@ import menus from "@/config/menu";
 import { removeUnicode } from "../../helpers";
 import moment from "moment";
 
-// import BarChart from "@/components/BarChart.vue";
-// import Statistics from "../Statistics";
-import Statistics from "@/views/home/Statistics";
+import BarChart from "@/components/BarChart.vue";
 
 export default {
     name: "home",
     components: {
-        // BarChart,
-        Statistics
+        BarChart
     },
     data() {
         return {
@@ -224,7 +291,9 @@ export default {
             isSearch: false,
             menus: menus,
             title_noti: "",
-            notes_noti: ""
+            notes_noti: "",
+            //
+            chartData: {}
         };
     },
     created() {

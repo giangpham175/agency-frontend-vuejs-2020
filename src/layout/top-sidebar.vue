@@ -30,7 +30,8 @@
                             </a>
                         </li>
                         <li v-if="!isMobile" class="nav-item">
-                            <h6 class="ml-2 bold">Dịch vụ Like</h6>
+                            <!-- <h6 class="ml-2 bold">Dịch vụ Like</h6> -->
+                            <img src="/assets/images/logo.png" alt="" class="ml-4" />
                         </li>
                         <!-- ============================================================== -->
                         <!-- Search -->

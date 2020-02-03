@@ -2,7 +2,7 @@
     <!-- nếu mobile thì minisibare luôn true, toggle show-sidebar -->
     <!-- nếu notmobile thì toggle minisibare , show-sidebar false -->
     <div :class="[themeSkin, 'fixed-layout', isMobile ? { 'mini-sidebar': true, 'show-sidebar': isMiniSidebar } : { 'mini-sidebar': isMiniSidebar, 'show-sidebar': false }]" id="main-wrapper">
-        <top-bar></top-bar>
+        <!-- <top-bar></top-bar> -->
         <left-sidebar></left-sidebar>
         <div class="page-wrapper">
             <div v-show="isMobile && isMiniSidebar" @click="toggleSideBar" class="overlay"></div>
@@ -15,13 +15,13 @@
 </template>
 
 <script>
-import TopBar from "./top-sidebar";
+// import TopBar from "./top-sidebar";
 import LeftSidebar from "./left-sidebar";
 import maintenance from "./maintenance";
 import { APP_IS_MIMI_SIDEBAR } from "@/store/types";
 export default {
     components: {
-        TopBar,
+        // TopBar,
         LeftSidebar,
         maintenance
     },
@@ -36,7 +36,7 @@ export default {
             return this.$store.state.app.isMobile;
         },
         themeSkin() {
-            return "skin-yellow";
+            return "skin-blue";
         },
         site() {
             return this.$store.state.site;
@@ -77,7 +77,9 @@ export default {
     position: fixed;
 }
 .page-wrapper {
-    margin-bottom: 56px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 15px;
 }
 .overlay {
     position: fixed; /* Sit on top of the page content */
